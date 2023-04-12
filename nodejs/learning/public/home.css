@@ -1,0 +1,21 @@
+.flexs {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flexs li {
+  margin-right: 20px;
+  background-color: bisque;
+  padding: 5px 8px 5px 8px;
+  border-radius: 10px;
+  list-style: none;
+}
+.flexs li:hover {
+  box-shadow: 3px 3px black;
+}
+.flexs li a {
+  color: black;
+  text-decoration: none;
+}
+.flexs li a:hover {
+  color: blueviolet;
+}

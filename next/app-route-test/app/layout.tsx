@@ -25,7 +25,7 @@ export default function RootLayout({
                 Home
               </button>
             </Link>
-            <Link href="/about">
+            <Link href="/about" prefetch={false}>
               <button className=" border border-white px-5 py-2 rounded-full hover:bg-zinc-800">
                 About
               </button>

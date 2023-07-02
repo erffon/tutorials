@@ -3,7 +3,7 @@ import Image from "next/image";
 
 //static data fetching
 const homeData = async () => {
-  const res = await fetch(DATA.ALL_CHARACTERS, { next: { revalidate: 10 } });
+  const res = await fetch(DATA.ALL_CHARACTERS);
   return res.json();
 };
 

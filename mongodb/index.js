@@ -1,11 +1,18 @@
 const express = require("express");
+const { connectToDb, getDb } = require("./db");
 
 //init express app
 const app = express();
 
-// specify listen port
-app.listen(9001, () => {
-  console.log("✅ server started: port 9001");
+let db;
+connectToDb((err) => {
+  if (!err) {
+    // specify listen port
+    app.listen(9001, () => {
+      console.log("✅ server started: port 9001");
+    });
+    db = getDb();
+  }
 });
 
 // create books api endpoint

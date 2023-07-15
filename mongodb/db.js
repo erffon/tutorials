@@ -6,7 +6,7 @@ module.exports = {
   // connect to db function
   connectToDb: (callback) => {
     // async function
-    MongoClient.connect("mongodb://localhost:27017/bookstore")
+    MongoClient.connect("mongodb://0.0.0.0:27017/bookstore")
       .then((client) => {
         dbConnection = client.db();
         return callback();

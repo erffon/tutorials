@@ -17,5 +17,15 @@ connectToDb((err) => {
 
 // create books api endpoint
 app.get("/books", (req, res) => {
-  res.json({ mssg: "welcome to API endpoint" });
+  let booksArray = [];
+  db.collection("books")
+    .find()
+    .sort({ author: 1 })
+    .forEach((item) => booksArray.push(item))
+    .then(() => {
+      res.status(200).json(booksArray);
+    })
+    .catch((err) => res.status(500).json({ error: "could not fetch data" }));
+  // we can not send multiple responses via a single request
+  //   res.json({ mssg: "welcome to API endpoint " });
 });

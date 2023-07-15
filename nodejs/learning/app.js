@@ -16,4 +16,6 @@ app.use(adminRoute);
 app.use((req, res) => {
   res.status(404).render("404", { title: "404 page" });
 });
-app.listen(9000);
+app.listen(9000, () => {
+  console.log("✅ server has been started on port 9000");
+});

@@ -1,5 +1,6 @@
 const express = require("express");
 const { connectToDb, getDb } = require("./db");
+const { ObjectId } = require("mongodb");
 
 //init express app
 const app = express();
@@ -12,6 +13,9 @@ connectToDb((err) => {
       console.log("✅ server started: port 9001");
     });
     db = getDb();
+  }
+  if (err) {
+    console.log("error message :", err);
   }
 });
 
@@ -28,4 +32,15 @@ app.get("/books", (req, res) => {
     .catch((err) => res.status(500).json({ error: "could not fetch data" }));
   // we can not send multiple responses via a single request
   //   res.json({ mssg: "welcome to API endpoint " });
+});
+
+app.get("/books/:id", (req, res) => {
+  db.collection("books")
+    .findOne({ _id: new ObjectId(req.params.id) })
+    .then((doc) => {
+      res.status(200).json(doc);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "could not fetch document" });
+    });
 });

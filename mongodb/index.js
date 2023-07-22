@@ -34,9 +34,9 @@ app.get("/books", (req, res) => {
   //   res.json({ mssg: "welcome to API endpoint " });
 });
 
-app.get("/books/:id", (req, res) => {
+app.get("/books/:name", (req, res) => {
   db.collection("books")
-    .findOne({ _id: new ObjectId(req.params.id) })
+    .findOne({ name: req.params.name })
     .then((doc) => {
       res.status(200).json(doc);
     })

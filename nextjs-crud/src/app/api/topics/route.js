@@ -12,3 +12,19 @@ export async function POST(request) {
     { success: true }
   );
 }
+
+export async function GET(request) {
+  await connectMongoDB();
+  const topics = await Topic.find();
+  if (topics.length > 0) {
+    return NextResponse.json({
+      message: "All Topics returned Successfully ✅",
+      topics,
+    });
+  } else {
+    return NextResponse.json(
+      { message: "No Topics Found 🚫" },
+      { status: 400 }
+    );
+  }
+}

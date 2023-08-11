@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>first Vue app</div>
 </template>
-<style></style>
-<script></script>
+<style lang="scss" scoped></style>
+<scripts setup></scripts>
